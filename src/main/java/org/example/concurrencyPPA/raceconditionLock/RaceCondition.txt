@@ -20,3 +20,11 @@ When two lock is applied at the same by creating two object , then it is bad beh
 Object o1=new Object | Object o2=new Object() => Thread thread=new Thread(new Worker(NumbersStore,o1));
 => public Worker(NumbersStore numberStore,Object lock) => numberStores.increment(lock) => public NumberStores(Object lock)
 => synchronized(lock) { // critical sections part }
+
+
+
+* Correct placement of the Lock
+
+if we put lock on the numberStores then it will run iteration for the million times, then start execution of the
+next thread , as here despite of increasing the performance of the programme , here it is executing in sequential manner
+which increase the timestamp , so we need to apply the lock at the lower level despite of the higher level.

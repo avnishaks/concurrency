@@ -1,0 +1,16 @@
+
+
+About call stack in thread :-
+
+
+Call stack is private to thread , they are not shared due to this suppose a situation where we have two seperate thread
+
+1. Thread 1 : Call Stack 1
+2. Thread 2 : Call Stack 2
+
+NOTES :-
+Here we have two different call stack for two different Thread , so when we any functions in the call stack 2 return
+the particular return value then it will not able to catch by Thread 1 , as Thread 1 has no linkage to call stack 2
+it only linked with call stack 1.
+
+

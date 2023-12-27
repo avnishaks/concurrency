@@ -1,0 +1,17 @@
+
+NOTES for the Race Conditions : -
+
+All about race condition and Locks which we used where Thread object is used in our programme
+
+* Critical Section is piece of the code that indulge into race conditions.
+
+* Critical section consist of three steps :-
+
+1. Fetch
+2. Compute
+3. Update
+
+* When you guard a piece of code by acquiring a lock , then that code will be executed
+sequentially only.
+
+

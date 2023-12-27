@@ -15,3 +15,8 @@ All about race condition and Locks which we used where Thread object is used in 
 sequentially only.
 
 
+When two lock is applied at the same by creating two object , then it is bad behaviour we should avoid it
+
+Object o1=new Object | Object o2=new Object() => Thread thread=new Thread(new Worker(NumbersStore,o1));
+=> public Worker(NumbersStore numberStore,Object lock) => numberStores.increment(lock) => public NumberStores(Object lock)
+=> synchronized(lock) { // critical sections part }

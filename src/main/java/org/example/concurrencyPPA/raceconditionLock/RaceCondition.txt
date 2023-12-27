@@ -28,3 +28,29 @@ Object o1=new Object | Object o2=new Object() => Thread thread=new Thread(new Wo
 if we put lock on the numberStores then it will run iteration for the million times, then start execution of the
 next thread , as here despite of increasing the performance of the programme , here it is executing in sequential manner
 which increase the timestamp , so we need to apply the lock at the lower level despite of the higher level.
+
+
+=> Incorrect way :
+
+synchronized(lock){
+  Non-CS _ line 1
+  Non-CS _ line 2
+  CS _ line 3
+  Non-CS _ line 4
+  Non-CS _ line 5
+}
+
+
+=> Correct way :
+
+Non- CS _ line 1
+Non- CS _ line 2
+
+synchronized(lock){
+    CS _ line 3
+}
+
+Non- CS _ line 4
+Non- CS _ line 5
+
+

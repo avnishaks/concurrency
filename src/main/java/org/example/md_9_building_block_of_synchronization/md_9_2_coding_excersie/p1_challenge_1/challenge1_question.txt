@@ -1,0 +1,45 @@
+Questions :
+
+We have thread from t1......t10 , print total 3 round in sorted fashion
+
+for eg:
+R1: t0 t1 t2 t3 t4 ....... t10
+R2: t0 t1 t2 t3 t4 ....... t10
+R3: t0 t1 t2 t3 t4 ....... t10
+
+
+
+public class Worker implements Runnable{
+
+    private Object lock;
+    private final int val;
+
+    private int rounds;
+
+    public Worker(int val,Object lock,int rounds){
+        this.val=val;
+        this.lock=lock;
+        this.rounds=rounds;
+    }
+    @Override
+    public void run(){
+        while (rounds>0){
+            while (compare()){}
+            System.out.println(val);
+            synchronized (lock){
+                Main.curr=(Main.curr+1)%10;
+            }
+            rounds--;
+        }
+    }
+
+    private boolean compare(){
+        boolean ans=false;
+        synchronized (lock){
+            ans=!(val==Main.curr);
+        }
+        return ans;
+    }
+}
+
+

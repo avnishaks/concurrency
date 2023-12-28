@@ -1,0 +1,87 @@
+There are broadly three ways to ensure code is thread safe or not :-
+
+
+1. In our code multiple thread is running but their is no shared data at all , then race condition is not going to
+happen
+
+Explanation: -
+
+Example of multiple thread is their , but no data is shared
+
+In the main class file :
+
+Thread t1=new Thread(new Worker("Thread A"));
+Thread t2=new Thread(new Worker("Thread B"));
+Thread t3=new Thread(new Worker("Thread C"));
+t1.start();
+t2.start();
+t3.start();
+
+Class implementing the Runnable interface
+
+@Override
+public void run(){
+    for(int i=0;i<5;i++){
+        sout("Hello from thread value : " + name );
+    }
+}
+
+
+2. In our code if we have multiple thread which is running , but the shared data is immutable , it can't changed
+then also race condition is not going to occurred.
+
+Explaination : Here LuckyNum is final , which is shared and immutable , so value remain same
+and it does not change at all.
+
+
+In the main class file :
+
+private static final LuckyNum=7;
+
+Thread t1=new Thread(new Worker("Thread A"));
+Thread t2=new Thread(new Worker("Thread B"));
+Thread t3=new Thread(new Worker("Thread C"));
+t1.start();
+t2.start();
+t3.start();
+
+Class implementing the Runnable interface
+
+@Override
+public void run(){
+    for(int i=0;i<5;i++){
+        sout("Hello from thread value : " + name + "    "+ Main.LuckyNum);
+    }
+}
+
+
+
+3. In our code if we have multiple thread which is running , but the shared data is Mutable and share object of same
+class where chances of modification is their , then it will leads to race condition , we have synchronized our code
+for that one.
+
+
+Explaination :
+
+
+package org.example.md_8_understanding_concurrency.compoundActions;
+
+public class EventContainer {
+    private final EventTittle eventTittle;
+    private final EventSyllabus eventSyllabus;
+
+    public EventContainer(EventTittle eventTittle, EventSyllabus eventSyllabus){
+        this.eventTittle=eventTittle;
+        this.eventSyllabus =eventSyllabus;
+    }
+
+    public synchronized void increment(){
+        eventTittle.next();
+        eventSyllabus.next();
+    }
+
+    public synchronized String getTittleSubject(){
+        String s="Tittle of the Subject : " +eventTittle.getTittle()+ "  |||   "+ " Core topic included : " + eventSyllabus.getSyllabus();
+        return  s;
+    }
+}

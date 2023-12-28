@@ -1,0 +1,82 @@
+Here we have a class called Employee class which contains different
+identifier and functions :-
+
+1. id for Employee id
+2. getid() returning the employee id for the Employee class
+3. calcSalary() which calculate the salary of the employee
+4. printPerformanceReport() which calculate the performance of the employee based on various factor.
+5. retriveBioData() which will return the whole info about the employee.
+
+
+ON the based on requirement asked by the company logic and schema design is changes as HR or upper
+department want some modification in calculating the salary and performance of the employee.
+
+
+=> Ideal case : Class must have only one reason to change this method is called SRP (Single Responsibility Principle)
+
+
+package org.example.md_3_design_principle.SRP;
+
+public class Employee {
+
+    private final int employee_id;
+
+    public Employee(int id){
+        this.employee_id=id;
+    }
+
+    public int getEmployeeId(){
+        return employee_id;
+    }
+
+    /*
+        Calculate the salary of the Employee
+     */
+
+    public double calculateSalary(){
+        return 0;
+    }
+
+    /*
+        Print the performance report in special format
+     */
+
+    public String printPerformanceReport(){
+        return "";
+    }
+
+    public BioData retrieveBioData(){
+        BioData bioData=null;
+        return bioData;
+    }
+
+}
+
+
+-> Above code Approach is not good to avoid these items changing the logic in Employee class , we need to create
+few more classes to solve the issues , and align with SRP model , Single Responsibility Principle
+
+
+* SalaryCalculator ( -calculateSalary(employee) )
+* PerformanceReportPrinter ( -printPerformanceReport(employee) )
+* BioDataRetriever ( -retrieveBioData(employee) )
+
+Creating different class for each of them
+
+package org.example.md_3_design_principle.SRP;
+
+public class Tester {
+    public static void main(String[] args) {
+        Employees e=new Employees(0);
+        SalaryCalculator salaryCalculator=new SalaryCalculator();
+        PerformaceCalculator performaceCalculator=new PerformaceCalculator();
+        BioData bioData=new BioData();
+
+        System.out.println(e.getEmployees());
+        System.out.println(salaryCalculator.calculateSalary(e));
+        System.out.println(performaceCalculator.calculatePerformance(e));
+        System.out.println(bioData.retrieveBioData(e));
+    }
+}
+
+Use above code script to test this out.

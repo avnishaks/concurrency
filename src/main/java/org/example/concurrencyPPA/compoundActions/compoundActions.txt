@@ -1,0 +1,68 @@
+
+When two thread run , then if we want to increase the value all together , their might be possibility the value
+get by the thread 2 is the steal value .
+
+public void run(){
+        int oldVal=number.getX();
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        number.setX(oldVal+1);
+}
+
+we see the problem in above code same thing is happening.
+
+To resolve this issues we should make a seperate function synchronized to perform this actions.
+
+thread-safe( compound Action ) => thread-safe(A1) + thread-safe(A2)
+
+-> catch then Act { Principle }
+
+Reentrancy : Re-entering the same synchronized block again and again
+
+IN the Number class :
+
+  public synchronized int getX(){
+        return x;
+    }
+
+    public synchronized void setX(int val){
+        x=val;
+    }
+
+    public synchronized void increment(){
+        int oldVal=getX();
+        setX(oldVal+1);
+    }
+
+
+
+In Worker Class :
+
+  @Override
+    public void run(){
+       for(int i=0;i<1000000;i++){
+           number.increment();
+       }
+    }
+
+
+
+IN Number class and Worker class :-
+
+Worker class calling for the synchronized block increment , then in Number class it call for the synchronized block
+getX() and SetX() which is itself synchronized , thus here we are entering into the synchronized block again and again.
+
+Thus , it creates a situation of re-entering into the code protected by same lock again and again, this process is
+called Reentrancy.
+
+-----------------------------------------------------------------
+
+
+More about compound actions :-
+
+
+We need to synchronized our read and write method both
+

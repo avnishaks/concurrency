@@ -6,7 +6,7 @@ public class Main {
     public static int curr=0;
     public static void main(String[] args) {
         Object lock=new Object();
-        int rounds=3;
+        int rounds=3; // here rounds is used as passed by Value
         Thread t1=new Thread(new Worker(0,lock,rounds));
         Thread t2=new Thread(new Worker(1,lock,rounds));
         Thread t3=new Thread(new Worker(2,lock,rounds));

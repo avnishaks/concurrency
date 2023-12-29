@@ -1,0 +1,23 @@
+
+LSP : Liskov Substitution Principle
+=> SubType must be substitutable for their base type
+
+Inheritance property is going to used here
+
+SuperClass : SubClass 1  and SubClass 2 { Derivatives }
+
+Abstract Class :
+
+Take an example of Employee , class make it as abstract class , but their is a function
+calculateSalary , as in real work in a company we have different level of employee
+salary is going to calculated for each one differently
+
+Type of Employee in a company { Full time employee , Intern Employee , Contract Employee }
+
+
+Notes : Never use inheritance for just sake of code re-use , use it when their is is-a relationship
+
+
+
+
+

@@ -15,7 +15,7 @@ department want some modification in calculating the salary and performance of t
 => Ideal case : Class must have only one reason to change this method is called SRP (Single Responsibility Principle)
 
 
-package org.example.md_3_design_principle.SRP;
+package org.example.md_3_design_principle.design_1_SRP;
 
 public class Employee {
 
@@ -63,7 +63,7 @@ few more classes to solve the issues , and align with SRP model , Single Respons
 
 Creating different class for each of them
 
-package org.example.md_3_design_principle.SRP;
+package org.example.md_3_design_principle.design_1_SRP;
 
 public class Tester {
     public static void main(String[] args) {

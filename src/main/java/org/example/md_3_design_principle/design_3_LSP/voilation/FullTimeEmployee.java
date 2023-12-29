@@ -1,4 +1,4 @@
-package org.example.md_3_design_principle.LSP.voilation;
+package org.example.md_3_design_principle.design_3_LSP.voilation;
 
 public class FullTimeEmployee extends Employee{
     protected FullTimeEmployee(int employeeId){

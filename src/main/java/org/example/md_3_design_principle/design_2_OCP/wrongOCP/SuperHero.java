@@ -1,4 +1,4 @@
-package org.example.md_3_design_principle.OCP.wrongOCP;
+package org.example.md_3_design_principle.design_2_OCP.wrongOCP;
 
 public enum SuperHero {
     CAPTAIN_AMERICA,

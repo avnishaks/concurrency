@@ -1,4 +1,4 @@
-package org.example.md_3_design_principle.OCP.correctOCP;
+package org.example.md_3_design_principle.design_2_OCP.correctOCP;
 
 import java.util.List;
 

@@ -1,0 +1,56 @@
+
+ISP : Interface Segregation Principle
+
+Lets Design a cricket game here:-
+
+Cricket Game has a variety of players
+
+Entites in cricket game :-
+
+Player ( interface / abstract class )
+
+-> Bat
+-> Bowl
+-> Field
+-> Wicket Keeper
+
+For eg :
+1. PureBatsman ( can do bat and field ) , but not do bowl,keep
+2. PureBowler can do bowl and field , but not do bat and keep
+3. WicketKeeper can do bat and keep , but not do bowl and field
+
+
+From above we can see , each of them not required all the method of interface / abstract class
+but it require sub-set of player method
+
+Mostly we think of implementing inheritance , in proper hierarchy method , so that child can implement
+the property of the parent class , but cons of it is if any new module come we might not able to keep in
+proper hierarchy , so we avoid using inheritance
+
+So , Finally solution is interface only we go ahead and create multiple
+interface for all the entity
+For example : we create the interface of the Batsman , Bowler , Fielder , Keeper , All Rounder separately
+
+Now if we implement below class :-
+
+1. PureBatsman : It need to implements interface Bat and Field
+2. PureBowler : It need to implements interface Bowl and Field
+3. WicketKeeper : It need to implements interface Bat and Keep
+4. All Rounder : It need to implements interface Bat , Bowl and Field
+
+Multiple interface is better than single interface
+
+
+If their is client side code or external module , then module just need to know about the information of the
+different type of interface that player class composed of , not need to know about information regarding
+different category of the player it can have. Thus this way of segregating things is called interface segregating
+principle.
+
+Client should not depend on the method that they don't use. { Client is con-crete classes }
+
+
+
+
+
+
+
